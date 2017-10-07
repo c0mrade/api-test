@@ -1,5 +1,23 @@
 class Transaction < ActiveRecord::Base
-  includes ActAsBinary
+  include ActAsBinary
+  ### Constants ###
+
+  ### Associations ###
+  has_one   :bank_guarantee
+
+  ### Validations ###
   validates :name, presence: true
-  has_one :bank_guarantee, dependent: :destroy
+
+  ### Scopes ###
+
+  ### Callbacks ###
+  before_destroy { |transaction| bank_guarantee.destroy }
+
+  ### Delegation ###
+
+  ### Plugins ###
+
+  ### Class methods ###
+
+  ### Instance methods ###
 end
