@@ -11,7 +11,7 @@ class Transaction < ActiveRecord::Base
   ### Scopes ###
 
   ### Callbacks ###
-  before_destroy { |transaction| bank_guarantee.destroy }
+  before_destroy :destroy_bank_guarantee
 
   ### Delegation ###
 
@@ -20,4 +20,10 @@ class Transaction < ActiveRecord::Base
   ### Class methods ###
 
   ### Instance methods ###
+  private
+
+  def destroy_bank_guarantee
+    return unless bank_guarantee.present?
+    bank_guarantee.destroy
+  end
 end

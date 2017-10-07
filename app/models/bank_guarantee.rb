@@ -6,7 +6,7 @@ class BankGuarantee < ActiveRecord::Base
   belongs_to :current_transaction, foreign_key: 'transaction_id', class_name: 'Transaction'
 
   ### Validations ###
-  validates :transaction_id, :active, presence: true
+  validates :current_transaction, :active, presence: true
 
   ### Scopes ###
 
