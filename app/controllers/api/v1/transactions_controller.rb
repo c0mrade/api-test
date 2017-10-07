@@ -6,7 +6,7 @@ class Api::V1::TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(transaction_params)
-    
+
     respond_to do |format|
       if @transaction.save
         format.json { render :show, status: :created }
@@ -34,6 +34,6 @@ class Api::V1::TransactionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:name,:importer_id,:exporter_id, :status)
+      params.require(:transaction).permit(:name, :importer_id, :exporter_id, :status)
     end
 end
