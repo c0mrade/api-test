@@ -1,8 +1,5 @@
 class Api::V1::BankGuaranteesController < ApplicationController
-  before_action :set_bank_guarantee, only: [:show, :update]
-
-  def show
-  end
+  before_action :set_bank_guarantee, only: [:update]
 
   def create
     @bank_guarantee = BankGuarantee.new(bank_guarantee_params)

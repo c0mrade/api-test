@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   root to: 'application#welcome'
 
   namespace :api do
-    namespace :v1 do
-      resources :transactions, only: [:index, :create, :show, :update] do
-        resources :bank_guarantees, only: [:index, :create, :show, :update]
+    namespace :v1, defaults: { format: 'json' } do
+      resources :transactions do
+        resources :bank_guarantees, only: [:create, :update], shallow: true
       end
     end
   end
